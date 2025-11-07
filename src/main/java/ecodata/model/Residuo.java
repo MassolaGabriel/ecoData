@@ -32,4 +32,7 @@ public class Residuo {
 
     private String localizacao;
 
+    @ManyToOne(mappedBy = "")
+    @
+
 }
