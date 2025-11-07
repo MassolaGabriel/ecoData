@@ -1,4 +1,4 @@
-package com.ecodata.eco_data;
+package ecodata;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
