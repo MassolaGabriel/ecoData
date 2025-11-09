@@ -32,7 +32,7 @@ public class Residuo {
 
     private String localizacao;
 
-    @ManyToOne(mappedBy = "")
-    @
-
+    @ManyToOne
+    @JoinColumn(name = "gerador_id", referencedColumnName = "id")
+    private Gerador gerador;
 }

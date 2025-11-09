@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Data
 @AllArgsConstructor
@@ -16,11 +19,13 @@ public class Gerador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     private String nome;
 
     @Column(name = "cnpj_cpf")
     private String cnpjOuCpf;
 
     private String endereco;
+
+    @OneToMany(mappedBy = "gerador", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Residuo> residuos = new ArrayList<>();
 }
