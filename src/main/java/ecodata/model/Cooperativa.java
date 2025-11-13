@@ -17,6 +17,7 @@ public class Cooperativa {
 
     private String nome;
 
+    @Column(name = "tipo_residuo_aceito")
     private String tipoResiduoAceito;
 
     private String localizacao;
