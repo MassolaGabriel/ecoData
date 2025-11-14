@@ -1,5 +1,6 @@
 package ecodata.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import ecodata.model.enums.StatusResiduo;
 import ecodata.model.enums.UnidadeMedida;
 import jakarta.persistence.*;
@@ -22,16 +23,17 @@ public class Residuo {
     private String tipoResiduo;
     private Double pesoOuVolume;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private UnidadeMedida unidadeMedida;
 
     private LocalDateTime dataRegistro;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private StatusResiduo statusResiduo;
 
     private String localizacao;
 
+    @JsonBackReference(value = "gerador-residuos")
     @ManyToOne
     @JoinColumn(name = "gerador_id", referencedColumnName = "id")
     private Gerador gerador;

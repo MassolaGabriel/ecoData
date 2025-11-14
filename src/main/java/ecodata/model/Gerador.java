@@ -1,5 +1,6 @@
 package ecodata.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +27,7 @@ public class Gerador {
 
     private String endereco;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "gerador", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Residuo> residuos = new ArrayList<>();
 }
