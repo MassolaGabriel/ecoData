@@ -38,7 +38,7 @@ public class ResiduoController {
         return ResponseEntity.ok(residuos);
     }
 
-    @PostMapping // (consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping
     public ResponseEntity<Residuo> salvarResiduo(@RequestBody Residuo residuo) {
         try {
             Residuo novoResiduo = residuoService.salvarResiduo(residuo);
