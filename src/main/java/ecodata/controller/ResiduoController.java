@@ -2,6 +2,7 @@ package ecodata.controller;
 
 import ecodata.model.Residuo;
 import ecodata.service.ResiduoService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,4 +43,20 @@ public class ResiduoController {
         return residuoService.salvarResiduo(residuo);
     }
 
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity<Residuo> atualizarResiduo(@PathVariable Long id, @RequestBody Residuo residuoAtualizado) {
+        try {
+            Residuo residuo = residuoService.atualizarResiduo(id, residuoAtualizado);
+            return ResponseEntity.ok(residuo);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarResiduo(@PathVariable Long id) {
+        residuoService.deletarResiduo(id);
+        return ResponseEntity.noContent().build();
+    }
 }
