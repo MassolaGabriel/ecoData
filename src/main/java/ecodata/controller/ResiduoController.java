@@ -3,7 +3,6 @@ package ecodata.controller;
 import ecodata.model.Residuo;
 import ecodata.service.ResiduoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,13 +38,8 @@ public class ResiduoController {
     }
 
     @PostMapping
-    public ResponseEntity<Residuo> salvarResiduo(@RequestBody Residuo residuo) {
-        try {
-            Residuo novoResiduo = residuoService.salvarResiduo(residuo);
-            return ResponseEntity.ok(novoResiduo);
-        } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().build();
-        }
+    public Residuo salvarResiduo(@RequestBody Residuo residuo) {
+        return residuoService.salvarResiduo(residuo);
     }
 
 }

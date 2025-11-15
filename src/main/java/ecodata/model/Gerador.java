@@ -27,7 +27,7 @@ public class Gerador {
 
     private String endereco;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "gerador-residuos")
     @OneToMany(mappedBy = "gerador", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Residuo> residuos = new ArrayList<>();
 }
